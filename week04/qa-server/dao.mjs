@@ -12,7 +12,18 @@ const db = new sqlite.Database('questions.sqlite', (err) => {
 /** QUESTIONS **/
 // get all the questions
 export const listQuestions = () => {
-  // write something clever
+  return new Promise ((resolve, reject) => {
+    //faccio la join per capire avere la mail di chi ha fatto la domanda
+    const sql = 'SELECT question.*, user.email FROM question JOIN user ON question.authorId = user.id';
+    db.all(sql, [], (err, rows) => {
+      if (err) {
+        reject(err);
+      } else {
+        const questions = rows.map((q) => new Question(q.id, q.text, q.email, q.authorId, q.date));
+        resolve(questions);
+      }
+    });
+  });
 }
 
 // get a question given its id
@@ -76,7 +87,17 @@ export const addAnswer = (answer, questionId) => {
 
 // update an existing answer
 export const updateAnswer = (answer) => {
-  // write something clever
+  return new Promise ((resolve, reject) => {
+    //modifica di una domanda andando a modifidare il testo
+    const sql = 'UPDATE answer SET text = ? WHERE id = ?';
+    //ricordarsi che per UPDATE, DELETE e INSERT bisogna usare db.run senza =>
+    db.run(sql, [answer.text, answer.id], function(err) {
+      if (err)
+        reject(err);
+      else
+        resolve(this.changes);
+    });
+  });
 }
 
 // vote for an answer
