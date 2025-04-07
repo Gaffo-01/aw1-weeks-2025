@@ -12,8 +12,8 @@ fakeQuestion.init();
 const fakeAnswers = fakeQuestion.getAnswers();
 
 function App() {
-    const [question, setQuestion] = useState(fakeQuestion);
-    const [answers, setAnswers] = useState(fakeAnswers);
+  const [question, setQuestion] = useState(fakeQuestion);
+  const [answers, setAnswers] = useState(fakeAnswers);
 
   return (
     <>
