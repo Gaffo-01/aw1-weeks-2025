@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Container } from "react-bootstrap";
 
 import { Question, Answer } from "./models/QAModels.mjs";
+
 import NavHeader from "./components/NavHeader";
 import QuestionDescription from "./components/QuestionDescription";
 import Answers from "./components/Answers";
@@ -42,6 +43,7 @@ function App() {
     setAnswers((oldAnswers) => {
       // temporaneo
       const newId = Math.max(...oldAnswers.map((ans) => ans.id)) + 1;
+      
       const newAnswer = new Answer(
         newId,
         answer.text,

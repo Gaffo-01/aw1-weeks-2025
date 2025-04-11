@@ -25,7 +25,8 @@ function Question(id, text, email, userId, date) {
     this.answers = [
       new Answer(1, "Yes", "stefano.zeta@email.it", 2, "2025-02-28", -10),
       new Answer(2, "Not in a million year", "guido.vanrossum@python.org", 3, "2025-03-01", 5),
-      new Answer(3, "Both have their pros and cons", "alessio.gi@email.it", 4, "2025-03-02")
+      new Answer(3, "Both have their pros and cons", "alessio.gi@email.it", 4, "2025-03-02"),
+      new Answer(4, "andre ciao ", "alessio.gi@email.it", 4, "2025-03-02")
     ];
   }
 }

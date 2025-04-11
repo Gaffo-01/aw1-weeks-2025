@@ -16,6 +16,10 @@ function Answers(props) {
   
   ci serve lo stato in answers perchè è il padre comune di questi elementi
   (form e tabella)*/
+
+  /*inizialmente passo come risposta da editare una riposta undefined
+  quando effetto la set in editableAnswer inserisco la risposta che voglio modificare*/
+
   const [editableAnswer, setEditableAnswer] = useState();
 
   const handleEdit = (answer) => {
@@ -94,7 +98,7 @@ function AnswerTable(props) {
           <AnswerRow
             /*con tabelle, liste, bisogna inserire delle key 
             univoche per l'utilizzo di React*/
-            key={ans.id}
+            key={ans.id} //sempre quando usiamo .map()
             answer={ans}
             voteUp={props.voteUp}
             handleEdit={props.handleEdit}

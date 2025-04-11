@@ -30,6 +30,10 @@ function AnswerForm(props) {
     return initialState;
   };
 
+  /*
+  - handleSubmit è una funzione che viene chiamata quando il form viene inviato
+  - initialState è lo stato precedente del form (cioè quando viene invocato)
+   */
   const [state, formAction] = useActionState(handleSubmit, initialState);
 
   return (
@@ -65,8 +69,10 @@ function AnswerForm(props) {
             defaultValue={state.date.format("YYYY-MM-DD")}
           ></Form.Control>
         </Form.Group>
+
+        {/*codice javascript */}
         {props.addAnswer && (
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" onClick={props.addAnswer}>
             Add
           </Button>
         )}
@@ -75,6 +81,8 @@ function AnswerForm(props) {
             Update
           </Button>
         )}{" "}
+
+        {/*cancel sempre attivo quindi posso gestirlo cosi con onClick */}
         <Button variant="danger" onClick={props.cancel}>
           Cancel
         </Button>
