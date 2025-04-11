@@ -69,7 +69,7 @@ function AnswerForm(props) {
         </Form.Group>
         {/*codice javascript */}
         {props.addAnswer && (
-          <Button variant="primary" type="submit" onClick={props.addAnswer}>
+          <Button variant="primary" type="submit">
             Add
           </Button>
         )}
