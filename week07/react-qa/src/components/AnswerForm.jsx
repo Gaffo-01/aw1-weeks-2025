@@ -21,9 +21,7 @@ function AnswerForm(props) {
       return answer;
     }
 
-    if (props.addAnswer)
-      // aggiungo la risposta allo stato in App
-      props.addAnswer(answer);
+    if (props.addAnswer) props.addAnswer(answer);
     else props.editAnswer({ id: props.answer.id, ...answer });
 
     // ritorno lo stato del form
@@ -69,7 +67,6 @@ function AnswerForm(props) {
             defaultValue={state.date.format("YYYY-MM-DD")}
           ></Form.Control>
         </Form.Group>
-
         {/*codice javascript */}
         {props.addAnswer && (
           <Button variant="primary" type="submit" onClick={props.addAnswer}>
@@ -81,7 +78,6 @@ function AnswerForm(props) {
             Update
           </Button>
         )}{" "}
-
         {/*cancel sempre attivo quindi posso gestirlo cosi con onClick */}
         <Button variant="danger" onClick={props.cancel}>
           Cancel

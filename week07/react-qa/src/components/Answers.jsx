@@ -38,6 +38,8 @@ function Answers(props) {
             answers={props.answers}
             voteUp={props.voteUp}
             handleEdit={handleEdit}
+            deleteAnswer={props.deleteAnswer}
+            voteDown={props.voteDown}
           />
 
           {mode === "view" && (
@@ -102,6 +104,8 @@ function AnswerTable(props) {
             answer={ans}
             voteUp={props.voteUp}
             handleEdit={props.handleEdit}
+            deleteAnswer={props.deleteAnswer}
+            voteDown={props.voteDown}
           />
         ))}
       </tbody>
@@ -119,6 +123,8 @@ function AnswerRow(props) {
         voteUp={props.voteUp}
         answer={props.answer}
         handleEdit={props.handleEdit}
+        deleteAnswer={props.deleteAnswer}
+        voteDown={props.voteDown}
       />
     </tr>
   );
@@ -140,21 +146,42 @@ function AnswerAction(props) {
     <td>
       <Button
         variant="warning"
+        className="me-1"
         onClick={() => {
           props.voteUp(props.answer.id);
         }}
       >
+        {/*bi è il nome della libreria bootstrap icon*/}
+        {/*bi-arrow-up è il nome dell'icona che vogliamo utilizzare */}
         <i className="bi bi-arrow-up" />
       </Button>
       <Button
         variant="primary"
-        className="mx-1"
+        className="me-1"
         onClick={() => props.handleEdit(props.answer)}
       >
+        {/*bi è il nome della libreria bootstrap icon*/}
+        {/*bi-pencil-square è il nome dell'icona che vogliamo utilizzare */}
         <i className="bi bi-pencil-square" />
       </Button>
-      <Button variant="danger">
+      <Button
+        variant="danger"
+        className="me-1"
+        onClick={() => props.deleteAnswer(props.answer.id)}
+      >
+        {/*bi è il nome della libreria bootstrap icon*/}
+        {/*bi-trash è il nome dell'icona che vogliamo utilizzare */}
         <i className="bi bi-trash" />
+      </Button>
+      <Button
+        variant="dark"
+        onClick={() => {
+          props.voteDown(props.answer.id);
+        }}
+      >
+        {/*bi è il nome della libreria bootstrap icon*/}
+        {/*bi-arrow-up è il nome dell'icona che vogliamo utilizzare */}
+        <i className="bi bi-arrow-down" />
       </Button>
     </td>
   );

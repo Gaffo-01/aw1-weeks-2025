@@ -75,6 +75,29 @@ function App() {
     });
   };
 
+  const deleteAnswer = (answerId) => {
+    setAnswers((oldAnswers) => {
+      return oldAnswers.filter((ans) => ans.id !== answerId);
+    });
+  }
+
+  const voteDown = (answerId) => {
+    setAnswers((oldAnswers) => {
+      return oldAnswers.map((ans) => {
+        if (ans.id === answerId)
+          return new Answer(
+            ans.id,
+            ans.text,
+            ans.email,
+            ans.userId,
+            ans.date,
+            ans.score - 1
+          );
+        else return ans;
+      });
+    });
+  };
+
   return (
     <>
       <NavHeader questionNum={question.id} />
@@ -89,6 +112,8 @@ function App() {
           /*chiamata differente per farci notare
           che eventualmente possiamo chiamarlo in due maniere differenti */
           editAnswer={updateAnswer}
+          deleteAnswer={deleteAnswer}
+          voteDown={voteDown}
         />
       </Container>
     </>
