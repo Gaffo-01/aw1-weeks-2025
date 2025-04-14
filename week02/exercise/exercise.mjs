@@ -1,25 +1,29 @@
 import dayjs from "dayjs";
 
-function Answer(text, username, date, score=0) {
-  this.text=text;
-  this.username=username;
-  this.score=score;
-  this.date=dayjs(date);
+function Answer(text, username /*primary id*/, date, score = 0) {
+  this.text = text;
+  this.username = username;
+  this.score = score;
+  this.date = dayjs(date);
 
   this.toString = () => {
-    return `${this.username} replied ${this.text} on ${this.date.format('YYYY-MM-DD')} and got a score of ${this.score}`;
-  }
+    return `${this.username} replied ${this.text} on ${this.date.format(
+      "YYYY-MM-DD"
+    )} and got a score of ${this.score}`;
+  };
 }
 
-function Question(text, username, date) {
-  this.text=text;
-  this.username=username;
-  this.date=dayjs(date);
+function Question(text, username /*primary id */, date) {
+  this.text = text;
+  this.username = username;
+  this.date = dayjs(date);
   this.answers = [];
+
+  /*tutte le funzioni che si riferiscono a question */
 
   this.add = (answer) => {
     this.answers.push(answer);
-  }
+  };
 
   this.find = (username) => {
     /*const foundAnswers = [];
@@ -28,29 +32,37 @@ function Question(text, username, date) {
         foundAnswers.push(ans);
     }
     return foundAnswers;*/
-    return this.answers.filter(ans => ans.username === username);
-  }
+    return this.answers.filter((ans) => ans.username === username);
+  };
 
   this.afterDate = (date) => {
-    return this.answers.filter(ans => ans.date.isAfter(dayjs(date)));
-  }
+    return this.answers.filter((ans) => ans.date.isAfter(dayjs(date)));
+  };
 
   this.listByDate = () => {
-    return [...this.answers].sort((a,b) => (a.date.isAfter(b.date)) ? 1 : -1);
-  }
+    return [...this.answers].sort((a, b) => (a.date.isAfter(b.date) ? 1 : -1));
+  };
 
   this.listByScore = () => {
-    return [...this.answers].sort((a,b) => b.score - a.score);
-  }
-
+    return [...this.answers].sort((a, b) => b.score - a.score);
+  };
 }
 
-const question = new Question('Is JavaScript better than Python?', 'luigidr', '2025-02-28');
+const question = new Question(
+  "Is JavaScript better than Python?",
+  "luigidr",
+  "2025-02-28"
+);
 
-const firstAnswer = new Answer('Yes', 'stefanoz', '2025-03-03', -10);
-const secondAnswer = new Answer('Not in a million year', 'guidovanrossum', '2025-03-02', 5);
-const thirdAnswer = new Answer('No', 'alessiog', '2025-03-03');
-const fourthAnswer = new Answer('Then, I don\'t know', 'stefanoz', '2025-03-04');
+const firstAnswer = new Answer("Yes", "stefanoz", "2025-03-03", -10);
+const secondAnswer = new Answer(
+  "Not in a million year",
+  "guidovanrossum",
+  "2025-03-02",
+  5
+);
+const thirdAnswer = new Answer("No", "alessiog", "2025-03-03");
+const fourthAnswer = new Answer("Then, I don't know", "stefanoz", "2025-03-04");
 
 question.add(firstAnswer);
 question.add(secondAnswer);

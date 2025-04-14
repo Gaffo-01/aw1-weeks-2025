@@ -1,10 +1,9 @@
 GET http://localhost:3001/api/questions
 
 ###
-
+# lista delle risposte della domanda con id=2
 POST http://localhost:3001/api/questions/2/answers
 content-type: application/json
-
 {
   "text": "Last year, it had about 2220 first-timers.",
   "email": "luigi.derussis@polito.it",
@@ -14,7 +13,7 @@ content-type: application/json
 }
 
 ###
-
+# da tutte le domande prendi la domanda con id=5
 PUT http://localhost:3001/api/answers/5
 content-type: application/json
 
@@ -27,8 +26,15 @@ content-type: application/json
 }
 
 ###
-
 POST http://localhost:3001/api/answers/2/vote
+content-type: application/json
+
+{
+  "vote": "up"
+}
+
+###
+POST http://localhost:3001/api/answers/10/vote
 content-type: application/json
 
 {
