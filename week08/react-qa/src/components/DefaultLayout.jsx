@@ -3,8 +3,7 @@ import NavHeader from "./NavHeader";
 import { Container } from "react-bootstrap";
 
 function DefaultLayout() {
-
-  return(
+  return (
     <>
       <NavHeader />
       <Container fluid className="mt-3">
@@ -12,7 +11,6 @@ function DefaultLayout() {
       </Container>
     </>
   );
-
 }
 
 export default DefaultLayout;
