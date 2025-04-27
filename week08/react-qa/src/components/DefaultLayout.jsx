@@ -2,6 +2,7 @@ import { Outlet } from "react-router";
 import NavHeader from "./NavHeader";
 import { Container } from "react-bootstrap";
 
+
 function DefaultLayout() {
   return (
     <>

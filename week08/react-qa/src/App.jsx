@@ -104,6 +104,8 @@ function App() {
         viene messo al posto di index*/}
         <Route path="/" element={<Questions questions={questions} />} />
         <Route
+        // quando cerchiamo un id specifico, controllare nel componente QeustionDescription 
+        // se l'id è presente, altrimenti si indirizza in un'altra pagina per l'errore
           path="/questions/:questionId"
           element={<QuestionDescription questions={questions} />}
         >

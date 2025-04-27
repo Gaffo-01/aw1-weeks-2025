@@ -49,6 +49,7 @@ export function AnswerForm(props) {
   return (
     <>
       {state.error && <Alert variant="secondary">{state.error}</Alert>}
+
       <Form action={formAction}>
         <Form.Group className="mb-3">
           <Form.Label>Text</Form.Label>
